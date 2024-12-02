@@ -53,11 +53,11 @@ PRO GF3_Pipeline_Process
         longitude_string = tokens[4]
         PRINT, '提取的经度字符串: ', longitude_string
         longitude_string = STRMID(longitude_string, 1)  ; 去掉首字母
-;        PRINT, '去掉首字母后的经度字符串: ', longitude_string
+        ;        PRINT, '去掉首字母后的经度字符串: ', longitude_string
 
         ; 转换为浮点数
         longitude = FLOAT(longitude_string)
-;        PRINT, '转换后的经度值: ', longitude
+        ;        PRINT, '转换后的经度值: ', longitude
 
         ; 计算 UTM Zone
         utm_zone = FIX((longitude / 6) + 31)  ; 使用 FIX 将结果转换为整数
@@ -346,44 +346,46 @@ PRO GF3_Pipeline_Process
       ENDIF
 
       ; 遍历文件列表并逐一处理
-      FOR i = 0, N_ELEMENTS(file_list) - 1 DO BEGIN
-        input_file = file_list[i]
-        output_file = output_folder + FILE_BASENAME(input_file) + '_dem'  ; DEM 输出文件名
+      ;      FOR i = 0, N_ELEMENTS(file_list) - 1 DO BEGIN
+      ;        input_file = file_list[i]
+      input_file = file_list[0]
+      ;        output_file = output_folder + FILE_BASENAME(input_file) + '_dem'  ; DEM 输出文件名
+      output_file = output_dataset_folder + 'single_dem'  ; 统一生成一个 DEM 文件
 
-        ; 设置 DEM 输入和输出参数
-        PRINT, '正在处理文件: ', input_file
-        ok = oSB.SetParam('reference_sr_image_val', [input_file])  ; 设置输入文件
-        ok = oSB.SetParam('output_file_dem_val', [output_file])    ; 设置输出文件路径
-        ok = oSB.SetParam('grid_size', 450.0)                     ; 网格大小为 450 米
+      ; 设置 DEM 输入和输出参数
+      PRINT, '正在处理文件: ', input_file
+      ok = oSB.SetParam('reference_sr_image_val', [input_file])  ; 设置输入文件
+      ok = oSB.SetParam('output_file_dem_val', [output_file])    ; 设置输出文件路径
+      ok = oSB.SetParam('grid_size', 450.0)                     ; 网格大小为 450 米
 
-        ; 设置投影参数
-        PRINT, '设置投影参数...'
-        ok = oSB.SetParam('ocs_state', 'UTM-GLOBAL')         ; 投影方式
-        ok = oSB.SetParam('ocs_hemisphere', 'NORTH')         ; 北半球
-        ok = oSB.SetParam('ocs_projection', 'UTM')           ; UTM 投影
-        ok = oSB.SetParam('ocs_zone', '50')                  ; UTM Zone
-        ok = oSB.SetParam('ocs_ellipsoid', 'WGS84')          ; 椭球为 WGS84
-        ok = oSB.SetParam('ocs_reference_height', 0.0)       ; 基准高程
+      ; 设置投影参数
+      PRINT, '设置投影参数...'
+      ok = oSB.SetParam('ocs_state', 'UTM-GLOBAL')         ; 投影方式
+      ok = oSB.SetParam('ocs_hemisphere', 'NORTH')         ; 北半球
+      ok = oSB.SetParam('ocs_projection', 'UTM')           ; UTM 投影
+      ok = oSB.SetParam('ocs_zone', utm_zone)              ; UTM Zone
+      ok = oSB.SetParam('ocs_ellipsoid', 'WGS84')          ; 椭球为 WGS84
+      ok = oSB.SetParam('ocs_reference_height', 0.0)       ; 基准高程
 
-        ; 验证设置的参数
-        PRINT, '验证参数设置...'
-        ;        oSB.ListParams
-        ok = oSB.VerifyParams()
-        IF NOT ok THEN BEGIN
-          PRINT, '参数验证失败，请检查输入设置: ', input_file
-          CONTINUE
-        ENDIF
+      ; 验证设置的参数
+      PRINT, '验证参数设置...'
+      ;        oSB.ListParams
+      ok = oSB.VerifyParams()
+      IF NOT ok THEN BEGIN
+        PRINT, '参数验证失败，请检查输入设置: ', input_file
+        CONTINUE
+      ENDIF
 
-        ; 执行 DEM 提取任务
-        PRINT, '执行 DEM 提取任务: ', input_file
-        ok = oSB.Execute()
-        IF NOT ok THEN BEGIN
-          PRINT, 'DEM 提取过程中发生错误: ', input_file
-          CONTINUE
-        ENDIF
+      ; 执行 DEM 提取任务
+      PRINT, '执行 DEM 提取任务: ', input_file
+      ok = oSB.Execute()
+      IF NOT ok THEN BEGIN
+        PRINT, 'DEM 提取过程中发生错误: ', input_file
+        CONTINUE
+      ENDIF
 
-        PRINT, 'DEM 提取完成，文件保存在: ', output_file
-      ENDFOR
+      PRINT, 'DEM 提取完成，文件保存在: ', output_file
+      ;      ENDFOR
 
       ; 释放对象并退出批处理模式
       obj_destroy, oSB
@@ -417,11 +419,11 @@ PRO GF3_Pipeline_Process
         PRINT, '未找到输入文件 (_fil): ', input_folder
         RETURN
       ENDIF
-
+      dem_file = output_dataset_folder + 'single_dem'
       ; 遍历文件列表并逐一处理
       FOR i = 0, N_ELEMENTS(file_list) - 1 DO BEGIN
         input_file = file_list[i]
-        dem_file = dem_folder + FILE_BASENAME(input_file) + '_dem'  ; 对应的 DEM 文件
+        ;        dem_file = dem_folder + FILE_BASENAME(input_file) + '_dem'  ; 对应的 DEM 文件
         output_file = output_folder + FILE_BASENAME(input_file) + '_geo'  ; 地理编码输出文件
 
         ; 检查 DEM 文件是否存在
@@ -454,7 +456,7 @@ PRO GF3_Pipeline_Process
         ok = oSB.SetParam('ocs_state', 'UTM-GLOBAL')         ; 投影方式
         ok = oSB.SetParam('ocs_hemisphere', 'NORTH')         ; 北半球
         ok = oSB.SetParam('ocs_projection', 'UTM')           ; UTM 投影
-        ok = oSB.SetParam('ocs_zone', utm_zone)              ; UTM Zone赋值
+        ok = oSB.SetParam('ocs_zone', utm_zone)              ; UTM Zone
         ok = oSB.SetParam('ocs_ellipsoid', 'WGS84')          ; 椭球为 WGS84
         ok = oSB.SetParam('ocs_reference_height', 0.0)       ; 基准高程
 
