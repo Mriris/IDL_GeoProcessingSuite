@@ -51,13 +51,13 @@ PRO GF3_Pipeline_Process
       IF N_ELEMENTS(tokens) GE 5 THEN BEGIN
         ; 提取第四部分并去掉首字母
         longitude_string = tokens[4]
-        PRINT, '提取的经度字符串（带字母前缀）: ', longitude_string
+        PRINT, '提取的经度字符串: ', longitude_string
         longitude_string = STRMID(longitude_string, 1)  ; 去掉首字母
-        PRINT, '去掉首字母后的经度字符串: ', longitude_string
+;        PRINT, '去掉首字母后的经度字符串: ', longitude_string
 
         ; 转换为浮点数
         longitude = FLOAT(longitude_string)
-        PRINT, '转换后的经度值: ', longitude
+;        PRINT, '转换后的经度值: ', longitude
 
         ; 计算 UTM Zone
         utm_zone = FIX((longitude / 6) + 31)  ; 使用 FIX 将结果转换为整数
@@ -361,7 +361,7 @@ PRO GF3_Pipeline_Process
         ok = oSB.SetParam('ocs_state', 'UTM-GLOBAL')         ; 投影方式
         ok = oSB.SetParam('ocs_hemisphere', 'NORTH')         ; 北半球
         ok = oSB.SetParam('ocs_projection', 'UTM')           ; UTM 投影
-        ok = oSB.SetParam('ocs_zone', '49')                  ; UTM Zone 49
+        ok = oSB.SetParam('ocs_zone', '50')                  ; UTM Zone
         ok = oSB.SetParam('ocs_ellipsoid', 'WGS84')          ; 椭球为 WGS84
         ok = oSB.SetParam('ocs_reference_height', 0.0)       ; 基准高程
 
@@ -454,7 +454,7 @@ PRO GF3_Pipeline_Process
         ok = oSB.SetParam('ocs_state', 'UTM-GLOBAL')         ; 投影方式
         ok = oSB.SetParam('ocs_hemisphere', 'NORTH')         ; 北半球
         ok = oSB.SetParam('ocs_projection', 'UTM')           ; UTM 投影
-        ok = oSB.SetParam('ocs_zone', utm_zone)              ; UTM Zone
+        ok = oSB.SetParam('ocs_zone', utm_zone)              ; UTM Zone赋值
         ok = oSB.SetParam('ocs_ellipsoid', 'WGS84')          ; 椭球为 WGS84
         ok = oSB.SetParam('ocs_reference_height', 0.0)       ; 基准高程
 
