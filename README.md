@@ -82,6 +82,7 @@ $$
 
 1. **地面分辨率**  
    地面分辨率计算公式为：
+
 $$
 \text{ground\_resolution} = \frac{\text{pixel\_spacing\_rg}}{\sin \left( \frac{\pi \cdot \text{incidence\_angle}}{180} \right)}
 $$
@@ -93,6 +94,7 @@ $$
 
 2. **Range 多视因子**  
    Range 多视因子计算公式为：
+
 $$
 \text{range\_multilook} = \lceil \frac{\text{ground\_resolution}}{\text{pixel\_spacing\_rg}} \rceil
 $$
@@ -103,11 +105,11 @@ $$
 
 3. **Azimuth 多视因子**  
    Azimuth 多视因子计算公式为：
+
 $$
 \text{azimuth\_multilook} = \lceil \frac{\text{ground\_resolution}}{\text{pixel\_spacing\_az}} \rceil
 $$
 
-   其中：
    - `pixel_spacing_az` 是方位方向上的像素间距
 
 
