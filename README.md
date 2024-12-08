@@ -62,18 +62,12 @@ IDL_GeoProcessingSuite 是一个使用 IDL 编程语言开发的高分三号（G
 ### UTM Zone 计算公式
 在高分三号数据处理中，UTM Zone（UTM 区号）是根据数据集文件夹名中的经度信息来计算的。
 
-   $$
-   \text{UTM Zone} = \left\lfloor \frac{\text{longitude}}{6} \right\rfloor + 31
-   $$
 1. **解析文件夹名中的经度信息**  
    文件夹名格式通常包含经度信息，计算 UTM Zone 需要从文件夹名中提取该经度。文件夹名的第四部分包含经度信息，我们首先提取该部分，然后去掉首字母。
 
 2. **UTM Zone 计算公式**  
    UTM Zone 是根据经度值来确定的，具体计算公式为：
-
-$$
-\text{UTM Zone} = \left\lfloor \frac{\text{longitude}}{6} \right\rfloor + 31
-$$
+   $\text{UTM Zone} = \left\lfloor \frac{\text{longitude}}{6} \right\rfloor + 31$
 
    其中：
    - 经度是文件夹名中提取的经度值
@@ -85,8 +79,9 @@ $$
 
 1. **地面分辨率**  
    地面分辨率计算公式为：
-
-   $$\text{ground\_resolution} = \frac{\text{pixel\_spacing\_rg}}{\sin \left( \frac{\pi \cdot \text{incidence\_angle}}{180} \right)}$$
+   $$
+   \text{ground\_resolution} = \frac{\text{pixel\_spacing\_rg}}{\sin \left( \frac{\pi \cdot \text{incidence\_angle}}{180} \right)}
+   $$
 
    其中：
    - `pixel_spacing_rg` 是雷达方向的像素间距
@@ -95,10 +90,7 @@ $$
 
 2. **Range 多视因子**  
    Range 多视因子计算公式为：
-   
-   $$
-   \text{range\_multilook} = \lceil \frac{\text{ground\_resolution}}{\text{pixel\_spacing\_rg}} \rceil
-   $$
+   $\text{range\_multilook} = \lceil \frac{\text{ground\_resolution}}{\text{pixel\_spacing\_rg}} \rceil$
 
    其中：
    - `pixel_spacing_rg` 是雷达方向上的像素间距
