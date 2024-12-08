@@ -68,11 +68,10 @@ IDL_GeoProcessingSuite 是一个使用 IDL 编程语言开发的高分三号（G
 2. **UTM Zone 计算公式**  
    UTM Zone 是根据经度值来确定的，具体计算公式为：
 
-$$
+```math
 \text{UTM Zone} = \left\lfloor \frac{\text{longitude}}{6} \right\rfloor + 31
-$$
+```
 
-其中：
 - 经度是文件夹名中提取的经度值
 - $\left\lfloor x \right\rfloor$ 表示向下取整（整数部分）
 - $31$ 是加上的基准值，用于确定起始区号
@@ -87,7 +86,6 @@ $$
 \text{ground\_resolution} = \frac{\text{pixel\_spacing\_rg}}{\sin \left( \frac{\pi \cdot \text{incidence\_angle}}{180} \right)}
 ```
 
-   其中：
    - `pixel_spacing_rg` 是雷达方向的像素间距
    - `incidence_angle` 是入射角度，单位为度
    - $\sin$ 是正弦函数
@@ -95,11 +93,10 @@ $$
 2. **Range 多视因子**  
    Range 多视因子计算公式为：
 
-$$
+```math
 \text{range\_multilook} = \lceil \frac{\text{ground\_resolution}}{\text{pixel\_spacing\_rg}} \rceil
-$$
+```
 
-   其中：
    - `pixel_spacing_rg` 是雷达方向上的像素间距
    - $\lceil x \rceil$ 表示向上取整
 
