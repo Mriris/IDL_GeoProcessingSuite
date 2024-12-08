@@ -71,15 +71,16 @@ IDL_GeoProcessingSuite 是一个使用 IDL 编程语言开发的高分三号（G
 2. **UTM Zone 计算公式**  
    UTM Zone 是根据经度值来确定的，具体计算公式为：
 
-
+   <div>
    $$
    \text{UTM Zone} = \left\lfloor \frac{\text{longitude}}{6} \right\rfloor + 31
    $$
+   </div>
 
-其中：
-- 经度是文件夹名中提取的经度值
-- $\left\lfloor x \right\rfloor$ 表示向下取整（整数部分）
-- $31$ 是加上的基准值，用于确定起始区号
+   其中：
+   - 经度是文件夹名中提取的经度值
+   - $\left\lfloor x \right\rfloor$ 表示向下取整（整数部分）
+   - $31$ 是加上的基准值，用于确定起始区号
    
 ### 多视因子计算公式
 在高分三号数据处理中的 **多视因子** 计算是为了进行图像处理中的 **多视合成**，这通常用于提升图像质量或处理雷达图像的分辨率。
