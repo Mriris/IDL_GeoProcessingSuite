@@ -79,7 +79,10 @@ IDL_GeoProcessingSuite 是一个使用 IDL 编程语言开发的高分三号（G
 
 1. **地面分辨率**  
    地面分辨率计算公式为：
-   $\text{Ground Resolution} = \frac{\text{pixel\_spacing\_rg}}{\sin \left( \frac{\pi \cdot \text{incidence\_angle}}{180} \right)}$
+
+   ```math
+   \text{Ground Resolution} = \frac{\text{pixel\_spacing\_rg}}{\sin \left( \frac{\pi \cdot \text{incidence\_angle}}{180} \right)}
+   ```
 
    其中：
    - `pixel_spacing_rg` 是雷达方向的像素间距
