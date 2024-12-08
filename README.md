@@ -67,6 +67,7 @@ IDL_GeoProcessingSuite 是一个使用 IDL 编程语言开发的高分三号（G
 
 2. **UTM Zone 计算公式**  
    UTM Zone 是根据经度值来确定的，具体计算公式为：
+
    ```math
    \text{UTM Zone} = \left\lfloor \frac{\text{longitude}}{6} \right\rfloor + 31
    ```
@@ -74,7 +75,7 @@ IDL_GeoProcessingSuite 是一个使用 IDL 编程语言开发的高分三号（G
    ```math
    \left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)
    ```
-   
+
    其中：
    - 经度是文件夹名中提取的经度值
    - $\left\lfloor x \right\rfloor$ 表示向下取整（整数部分）
