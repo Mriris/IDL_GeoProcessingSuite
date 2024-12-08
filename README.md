@@ -1,6 +1,3 @@
-```math
-\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)
-```
 # IDL_GeoProcessingSuite
 IDL_GeoProcessingSuite 是一个使用 IDL 编程语言开发的高分三号（GF3）数据处理脚本套件，包含数据导入、多视处理、单通道强度数据滤波、地理编码和辐射定标、导出模块，支持部分高分三号数据处理流程。
 
@@ -71,7 +68,7 @@ IDL_GeoProcessingSuite 是一个使用 IDL 编程语言开发的高分三号（G
 2. **UTM Zone 计算公式**  
    UTM Zone 是根据经度值来确定的，具体计算公式为：
    ```math
-   \text{UTM Zone} = \left\lfloor \frac{\text{经度}}{6} \right\rfloor + 31
+   \text{UTM Zone} = \left\lfloor \frac{\text{longitude}}{6} \right\rfloor + 31
    ```
 
    其中：
