@@ -1,5 +1,5 @@
 # IDL_GeoProcessingSuite
-
+$$\left( \sum{k=1}^n a_k b_k \right)^2 \leq \left( \sum{k=1}^n ak^2 \right) \left( \sum{k=1}^n b_k^2 \right)$$
 IDL_GeoProcessingSuite 是一个使用 IDL 编程语言开发的高分三号（GF3）数据处理脚本套件，包含数据导入、多视处理、单通道强度数据滤波、地理编码和辐射定标、导出模块，支持部分高分三号数据处理流程。
 
 ![工作模式](Resource/工作模式.png)
