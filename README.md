@@ -62,6 +62,10 @@ IDL_GeoProcessingSuite 是一个使用 IDL 编程语言开发的高分三号（G
 ### UTM Zone 计算公式
 在高分三号数据处理中，UTM Zone（UTM 区号）是根据数据集文件夹名中的经度信息来计算的。以下是该计算的逻辑和公式：
 
+```math
+\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)
+```
+
 1. **解析文件夹名中的经度信息**  
    文件夹名格式通常包含经度信息，计算 UTM Zone 需要从文件夹名中提取该经度。文件夹名的第四部分包含经度信息，我们首先提取该部分，然后去掉首字母。
 
@@ -70,10 +74,6 @@ IDL_GeoProcessingSuite 是一个使用 IDL 编程语言开发的高分三号（G
 
    ```math
    \text{UTM Zone} = \left\lfloor \frac{\text{longitude}}{6} \right\rfloor + 31
-   ```
-
-   ```math
-   \left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)
    ```
 
    其中：
