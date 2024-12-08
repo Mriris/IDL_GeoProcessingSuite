@@ -64,7 +64,7 @@ IDL_GeoProcessingSuite 是一个使用 IDL 编程语言开发的高分三号（G
 在高分三号数据处理中，UTM Zone（UTM 区号）是根据数据集文件夹名中的经度信息来计算的。以下是该计算的逻辑和公式：
 
 1. **解析文件夹名中的经度信息**  
-   文件夹名格式通常包含经度信息，计算 UTM Zone 需要从文件夹名中提取该经度。假设文件夹名的第四部分包含经度信息（格式为 `XXX_XX_XX_XXXX_经度`），我们首先提取该部分，然后去掉首字母。
+   文件夹名格式通常包含经度信息，计算 UTM Zone 需要从文件夹名中提取该经度。文件夹名的第四部分包含经度信息，我们首先提取该部分，然后去掉首字母。
 
 2. **UTM Zone 计算公式**  
    UTM Zone 是根据经度值来确定的，具体计算公式为：
@@ -74,8 +74,8 @@ IDL_GeoProcessingSuite 是一个使用 IDL 编程语言开发的高分三号（G
 
    其中：
    - 经度是文件夹名中提取的经度值
-   - `\left\lfloor x \right\rfloor` 表示向下取整（整数部分）
-   - `31` 是加上的基准值，用于确定起始区号
+   - $\left\lfloor x \right\rfloor$ 表示向下取整（整数部分）
+   - $31$ 是加上的基准值，用于确定起始区号
    
 ### 多视因子计算公式
 在高分三号数据处理中的 **多视因子** 计算是为了进行图像处理中的 **多视合成**，这通常用于提升图像质量或处理雷达图像的分辨率。
@@ -85,27 +85,31 @@ IDL_GeoProcessingSuite 是一个使用 IDL 编程语言开发的高分三号（G
    $$
    \text{ground\_resolution} = \frac{\text{pixel\_spacing\_rg}}{\sin \left( \frac{\pi \cdot \text{incidence\_angle}}{180} \right)}
    $$
+
    其中：
    - `pixel_spacing_rg` 是雷达方向的像素间距
    - `incidence_angle` 是入射角度，单位为度
-   - `\sin` 是正弦函数
+   - $\sin$ 是正弦函数
 
 2. **Range 多视因子**  
    Range 多视因子计算公式为：
    $$
    \text{range\_multilook} = \lceil \frac{\text{ground\_resolution}}{\text{pixel\_spacing\_rg}} \rceil
    $$
+
    其中：
    - `pixel_spacing_rg` 是雷达方向上的像素间距
-   - `\lceil x \rceil` 表示向上取整
+   - $\lceil x \rceil$ 表示向上取整
 
 3. **Azimuth 多视因子**  
    Azimuth 多视因子计算公式为：
    $$
    \text{azimuth\_multilook} = \lceil \frac{\text{ground\_resolution}}{\text{pixel\_spacing\_az}} \rceil
    $$
+
    其中：
    - `pixel_spacing_az` 是方位方向上的像素间距
+
 
 ### 输出
 - 所有处理结果将保存为 TIFF 文件或其他格式的文件，存储在指定的输出目录中。
