@@ -115,3 +115,25 @@ IDL_GeoProcessingSuite 是一个使用 IDL 编程语言开发的高分三号（G
 
 ## 贡献
 如果您有改进建议或发现问题，请提交 Issue 或 Pull Request，我们欢迎所有贡献！
+
+## 参考资料
+
+- [IDL String 方法](https://envi.geoscene.cn/help/Subsystems/idl/Content/Reference%20Material/Static%20Methods/IDL_String.htm)
+- [IDL String Split](https://envi.geoscene.cn/help/Subsystems/idl/Content/Reference%20Material/Static%20Methods/IDL_String.htm#Split)
+- [CSDN 博客文章](https://blog.csdn.net/m0_66892427/article/details/134902918)
+
+### 本地 ENVI 安装帮助文件  
+以下路径为 ENVI 软件本地帮助文档路径，仅在安装 ENVI 软件后可用：  
+
+- **SARscape 多视处理**：  
+  `file:///D:/Application/Harris/SARscape/auxiliary/envi_extensions/idl/help/SARscape/multilooking.htm`  
+- **SARscape 多视任务处理**：  
+  `file:///D:/Application/Harris/SARscape/auxiliary/envi_extensions/idl/help/SARscape/sarmap_task_multilooking.htm`  
+- **GMTED2010 概述**：  
+  `file:///D:/Application/Harris/ENVI56/IDL88/help/online_help/Subsystems/envi/Content/GeorectifyImagery/GMTED2010Overview.htm`  
+- **ENVI 扩展任务导出 TIFF**：  
+  `file:///D:/Application/Harris/ENVI56/IDL88/help/online_help/Subsystems/envi/Content/ExtendCustomize/ENVITasks/ENVIExportRasterToTIFFTask.htm`  
+- **ENVI OpenRaster 文档**：  
+  `file:///D:/Application/Harris/ENVI56/IDL88/help/online_help/help.htm#search-OpenRaster`  
+- **ENVI Raster 文档**：  
+  `file:///D:/Application/Harris/ENVI56/IDL88/help/online_help/Subsystems/envi/Content/ExtendCustomize/ENVIRaster/enviRaster.htm`  
